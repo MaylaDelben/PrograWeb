@@ -56,7 +56,9 @@ public class ServletLogin extends HttpServlet {
 			resposta.write("Usuário e senha inválidos");
 		}
 		resposta.write("</body></html>");
+		resposta.write("</br><a href='http://localhost:8080/PrograWeb/login.jsp' onclick = sessao.invalidate() > Sair  </a>");
 	}
+	
 
 	private boolean autenticar(String nomeUsuario, String senhaUsuario) {
 		
