@@ -2,6 +2,7 @@ package Trabalhandocomsessoes;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -48,8 +49,18 @@ public class ServletLogin extends HttpServlet {
 		
 		
 		if (autenticar(nomeUsuario,senhaUsuario)) {
+			
 			HttpSession sessao = request.getSession();
 			sessao.setAttribute(USUARIO, nomeUsuario);
+			
+			
+			resposta.write("Bem vindo "+ nomeUsuario);
+			resposta.write("<br>");
+			resposta.write("Sessão ID: " + sessao.getId());
+	        resposta.write("<br>");
+	        resposta.write("Data de criação: " + new Date(sessao.getCreationTime()));
+	        resposta.write("<br>");
+	        resposta.write("Ultimo acesso: " + new Date(sessao.getLastAccessedTime()));
 
 			sessao.getAttribute(USUARIO);
 
